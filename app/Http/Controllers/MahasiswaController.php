@@ -71,7 +71,7 @@ class MahasiswaController extends Controller
     {
         //menampilkan detail data dengan menemukan/berdasarkan Nim Mahasiswa
         $Mahasiswa = Mahasiswa::with('kelas')->where('Nim', $Nim)->first();
-        return view('mahasiswa.detail', compact('Mahasiswa'));
+        return view('mahasiswas.detail', compact('Mahasiswa'));
     }
 
     /**
@@ -82,8 +82,9 @@ class MahasiswaController extends Controller
      */
     public function edit($Nim)
     {
-        $Mahasiswa = Mahasiswa::find($Nim);
-        return view('mahasiswas.edit', compact('Mahasiswa'));
+        $Mahasiswa = Mahasiswa::with('kelas')->find($Nim);
+        $kelas = Kelas::all();
+        return view('mahasiswas.edit', compact('Mahasiswa', 'kelas'));
     }
 
     /**
@@ -95,6 +96,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $Nim)
     {
+        //melakukan validasi data
         $request->validate([
             'Nim' => 'required',
             'Nama' => 'required',
@@ -102,11 +104,19 @@ class MahasiswaController extends Controller
             'Jurusan' => 'required',
             'No_Handphone' => 'required',
         ]);
+        //fungsi eloquent untuk mengambil data kelas dari relation
+        $kelas = Kelas::find($request->get('Kelas'));
 
-        Mahasiswa::find($Nim)->update($request->all());
-
-        return redirect()->route('mahasiswa.index')
-            ->with('success', 'Mahasiswa Berhasil Diupdate');
+        //fungsi eloquent untuk menyimpan data mahasiswa
+        $mahasiswa = Mahasiswa::find($Nim);
+        $mahasiswa->Nim = $request->get('Nim');
+        $mahasiswa->Nama = $request->get('Nama');
+        $mahasiswa->Jurusan = $request->get('Jurusan');
+        $mahasiswa->No_Handphone = $request->get('No_Handphone');
+        $mahasiswa->kelas()->associate($kelas); // FUngsi eloquent untuk menyimpan belongTo
+        $mahasiswa->save();
+        //jika data berhasil diupdate, akan kembali ke halaman utama
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Diupdate');
     }
 
     /**
