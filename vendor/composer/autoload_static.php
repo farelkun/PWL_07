@@ -655,6 +655,7 @@ class ComposerStaticInit8aba308fe9924dc5a0f90e22367741cc
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\KelasSeeder' => __DIR__ . '/../..' . '/database/seeders/KelasSeeder.php',
         'Database\\Seeders\\MahasiswaSeeder' => __DIR__ . '/../..' . '/database/seeders/MahasiswaSeeder.php',
+        'Database\\Seeders\\MataKuliahSeeder' => __DIR__ . '/../..' . '/database/seeders/MataKuliahSeeder.php',
         'Database\\Seeders\\UpdateMahasiswaSeeder' => __DIR__ . '/../..' . '/database/seeders/UpdateMahasiswaSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',

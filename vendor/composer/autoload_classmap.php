@@ -133,6 +133,7 @@ return array(
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'Database\\Seeders\\KelasSeeder' => $baseDir . '/database/seeders/KelasSeeder.php',
     'Database\\Seeders\\MahasiswaSeeder' => $baseDir . '/database/seeders/MahasiswaSeeder.php',
+    'Database\\Seeders\\MataKuliahSeeder' => $baseDir . '/database/seeders/MataKuliahSeeder.php',
     'Database\\Seeders\\UpdateMahasiswaSeeder' => $baseDir . '/database/seeders/UpdateMahasiswaSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
