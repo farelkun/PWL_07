@@ -138,4 +138,11 @@ class MahasiswaController extends Controller
         $mahasiswas->appends(['keywords' => $request->keywords]);
         return view('mahasiswas.search', compact('mahasiswas'));
     }
+
+    public function nilai($nim)
+    {
+        //menampilkan detail data nilai mahasiswa dengan menemukan/berdasarkan Nim Mahasiswa
+        $mahasiswa = Mahasiswa::with('kelas', 'matakuliah')->find($nim);
+        return view('mahasiswas.nilai', compact('mahasiswa'));
+    }
 }
